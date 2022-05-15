@@ -11,17 +11,18 @@ using namespace std;
 
 void main() {
 
-	string path = "Resources/cards.jpg";
+	string path = "Resources/bert ernie.jpg";
 	Mat img = imread(path);
 	Mat imgGray, imgBlur, imgCanny, imgDil, imgErode;
 
 	cvtColor(img, imgGray, COLOR_BGR2GRAY);
 	GaussianBlur(imgGray, imgBlur, Size(7, 7), 5, 0);
-
+	Canny(imgBlur, imgCanny, 155, 15);
 
 	imshow("Image", img);
 	imshow("Image Gray", imgGray);
 	imshow("Image Blur", imgBlur);
+	imshow("Image Canny", imgCanny);
 
 	waitKey(0);
 }
