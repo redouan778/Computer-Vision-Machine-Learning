@@ -8,7 +8,7 @@ using namespace std;
 
 
 /////////////////  Images  //////////////////////
-
+s
 void main() {
 
 	string path = "Resources/bert ernie.jpg";
@@ -19,10 +19,16 @@ void main() {
 	GaussianBlur(imgGray, imgBlur, Size(7, 7), 5, 0);
 	Canny(imgBlur, imgCanny, 155, 15);
 
+	Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(3, 3));
+	dilate(imgCanny, imgDil, kernel);
+	erode(imgDil, imgErode, kernel);
+
 	imshow("Image", img);
 	imshow("Image Gray", imgGray);
 	imshow("Image Blur", imgBlur);
 	imshow("Image Canny", imgCanny);
-
+	imshow("Image Dilation", imgDil);
+	imshow("Image Erode", imgErode);
+	
 	waitKey(0);
 }
